@@ -1,0 +1,5 @@
+package Customfunctions
+
+func SampleConstants() {
+
+}
