@@ -3,6 +3,7 @@ package Restapi
 import (
 	"encoding/json"
 	"fmt"
+	"log"
 	"net/http"
 
 	"github.com/gorilla/mux"
@@ -19,10 +20,13 @@ type Person struct {
 }
 
 func SampleAPI() {
+
 	fmt.Println("Sample Rest API")
 
+	log.Println("starting API server")
 	//create a new router
 	r := mux.NewRouter()
+	log.Println("creating routes")
 
 	//Specify endpoints, handler functions and HTTP method
 	r.HandleFunc("/health-check", HealthCheck).Methods("GET")
@@ -35,6 +39,9 @@ func SampleAPI() {
 }
 
 func HealthCheck(w http.ResponseWriter, r *http.Request) {
+
+	log.Println("entering health check end point")
+
 	//specify status code
 	w.WriteHeader(http.StatusOK)
 
@@ -43,6 +50,9 @@ func HealthCheck(w http.ResponseWriter, r *http.Request) {
 }
 
 func Persons(w http.ResponseWriter, r *http.Request) {
+
+	log.Println("entering persons end point")
+
 	//declare response variable
 	var response Response
 
